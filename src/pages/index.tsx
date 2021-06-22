@@ -10,25 +10,20 @@ import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
 import { HomePage } from '../components/home-page'
 
 import { Hero } from '../components/Hero'
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { CTA } from '../components/CTA'
-import { Footer } from '../components/Footer'
+import React from 'react'
+import { Item } from '@components/item'
+import { items } from '@data/data'
+import Layout from '@components/layout'
+import { DefaultLayoutMain } from '@components/default-layout-main'
 
-const Index = () => (
-  <Container height="100vh">
-    <Hero />
-    <Main>
-      <HomePage/>
-    </Main>
-
-    <DarkModeSwitch />
-    <Footer>
-      <Text>Made with ❤️ by Mike Majara</Text>
-    </Footer>
-    <CTA />
-  </Container>
-)
+const Index = () => {
+  console.log(items.slice(0,1))
+  return ( 
+    <Layout>
+        {items.slice(0,1).map((e, idx) => (
+          <Item key={idx} id={e.id} />
+        ))}
+    </Layout>
+)}
 
 export default Index
