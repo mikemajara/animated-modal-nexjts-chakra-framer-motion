@@ -14,6 +14,7 @@ import {
   useDisclosure,
   Heading,
   Box,
+  Stack,
 } from "@chakra-ui/react";
 import {
   ABox,
@@ -26,8 +27,11 @@ import {
   AModalFooter,
   AModalHeader,
   AModalOverlay,
+  AStack,
   AText,
 } from "./chakra-animated-components";
+import { CalendarIcon } from "@chakra-ui/icons";
+import {IoLocationOutline} from 'react-icons/io5'
 
 const transition = { type: "spring", bounce: 0 };
 
@@ -43,21 +47,21 @@ export function Item({ id }) {
           justify="start"
           onClick={onOpen}
           layoutId={`container-${id}`}
-          shadow="lg"
+          // shadow="lg"
+          width={["300px", "400px"]}
           style={{
             border: "1px solid",
             borderColor: "lightgrey",
             borderRadius: "10px",
-            width: "400px",
-            height: "300px"
+            height: "130px",
           }}
           position="relative"
           animate={transition}
           exit={transition}
         >
           {/* Animations that move text from one place to another without
-            * touching width, have to be done with absolute positions.
-            */}
+           * touching width, have to be done with absolute positions.
+           */}
           <ABox
             layoutId={`heading-${id}`}
             style={{
@@ -68,6 +72,15 @@ export function Item({ id }) {
             }}
           >
             <Heading>Modal Title</Heading>
+
+            <Stack spacing="3" direction="row" mt={2}>
+              <Button size="xs" leftIcon={<CalendarIcon />} _focus={{}} cursor="unset">
+                1 year · 3 months
+              </Button>
+              <Button size="xs" leftIcon={<IoLocationOutline />}  _focus={{}} variant="ghost" cursor="unset">
+                Dublin
+              </Button>
+            </Stack>
           </ABox>
         </ABox>
         {/* <Button onClick={onOpen}>Open Modal</Button> */}
@@ -95,11 +108,25 @@ export function Item({ id }) {
                 }}
                 transition={transition}
               >
-              <Heading>Modal Title</Heading>
+                <AHeading>Modal Title</AHeading>
+                <Stack spacing="3" direction="row" mt={2}>
+                  <Button size="xs" leftIcon={<CalendarIcon />} _focus={{}} cursor="unset">
+                    1 year · 3 months
+                  </Button>
+                  <Button size="xs" leftIcon={<IoLocationOutline />} _focus={{}} variant="ghost" cursor="unset">
+                    Dublin
+                  </Button>
+                </Stack>
               </ABox>
-              <ABox py={16} animate exit={{opacity: 0, ...transition}}>
+              <ABox
+                mt={28}
+                pb={12}
+                animate
+                exit={{ opacity: 0, ...transition }}
+              >
                 {text}
               </ABox>
+              <motion.div></motion.div>
             </AModalBody>
 
             {/* <AModalFooter animate exit={{opacity: 0, ...transition}}>

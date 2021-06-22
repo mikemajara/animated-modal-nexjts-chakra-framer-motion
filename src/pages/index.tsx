@@ -5,6 +5,7 @@ import {
   List,
   ListIcon,
   ListItem,
+  Stack,
 } from '@chakra-ui/react'
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
 import { HomePage } from '../components/home-page'
@@ -20,9 +21,11 @@ const Index = () => {
   console.log(items.slice(0,1))
   return ( 
     <Layout>
-        {items.slice(0,1).map((e, idx) => (
+      <Stack p={3}>
+        {items.map((e, idx) => (
           <Item key={idx} id={e.id} />
         ))}
+      </Stack>
     </Layout>
 )}
 
